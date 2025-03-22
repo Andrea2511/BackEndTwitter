@@ -1,0 +1,32 @@
+server:
+  port: 8081  # Puerto donde corre el servicio de autenticación
+
+spring:
+  application:
+    name: auth-service  # Nombre del microservicio
+  datasource:
+    url: jdbc:mysql://localhost:3306/auth_db
+    username: root
+    password: mypassword
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update  # Crea y actualiza tablas automáticamente
+    show-sql: true  # Muestra las consultas en consola
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+
+jwt:
+  secret: mySuperSecretKey  # Clave secreta para JWT
+  expiration: 3600000
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/  # Registro en Eureka (si usas Service Discovery)
+  instance:
+    prefer-ip-address: true
+
+logging:
+  level:
+    root: INFO
+    com.example.auth: DEBUG  # Muestra logs detallados solo para este servicio

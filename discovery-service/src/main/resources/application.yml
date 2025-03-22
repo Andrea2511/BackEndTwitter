@@ -1,0 +1,18 @@
+server:
+  port: 8761  # Puerto donde correrá el servidor Eureka
+
+spring:
+  application:
+    name: discovery-service  # Nombre del servicio
+
+eureka:
+  client:
+    register-with-eureka: false  # Este servicio es el servidor, no se registra a sí mismo
+    fetch-registry: false  # No necesita buscar otros servicios
+  server:
+    enable-self-preservation: true  # Evita eliminar servicios rápidamente en entornos de prueba
+
+logging:
+  level:
+    com.netflix.eureka: OFF
+    com.netflix.discovery: OFF

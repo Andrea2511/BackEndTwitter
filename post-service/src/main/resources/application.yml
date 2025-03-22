@@ -1,0 +1,32 @@
+server:
+  port: 8082  # Puerto para el servicio de publicaciones
+
+spring:
+  application:
+    name: post-service  # Nombre del microservicio
+  datasource:
+    url: jdbc:mysql://localhost:3306/post_db
+    username: root
+    password: mypassword
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update  # Crea y actualiza tablas automáticamente
+    show-sql: true  # Muestra las consultas SQL en consola
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/  # Registro en Eureka
+  instance:
+    prefer-ip-address: true
+
+security:
+  jwt:
+    secret: mySuperSecretKey  # Clave secreta compartida con AuthService
+
+logging:
+  level:
+    root: INFO
+    com.example.post: DEBUG  # Muestra logs detallados para este servicio

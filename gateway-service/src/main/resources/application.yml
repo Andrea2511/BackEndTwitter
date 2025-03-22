@@ -1,0 +1,24 @@
+server:
+  port: 8080  # Puerto del API Gateway
+
+spring:
+  application:
+    name: gateway-service
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true  # Habilita el descubrimiento automático de servicios en Eureka
+          lower-case-service-id: true  # Convierte nombres de servicios a minúsculas
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/  # Dirección de Eureka
+  instance:
+    prefer-ip-address: true
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG  # Logs detallados para depuración
